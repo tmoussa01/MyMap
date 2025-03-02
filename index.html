@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Carte de la Belgique - OpenLayers</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@9.0.0/ol.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Carte de la Belgique</h1>
+        <div class="search-container">
+            <input type="text" id="searchBox" placeholder="Rechercher une adresse...">
+            <button id="searchButton">🔍</button>
+        </div>
+
+    </header>
+
+    <main>
+        <div class="button-container">
+            <button id="basemapButton" class="round-button" aria-label="Changer le fond de carte">
+                <img src="img/layers_6187768.png" alt="Calques">
+                <span class="tooltip">Carte de référence</span>
+            </button>
+
+            <button id="measureButton" class="round-button" aria-label="Outil de mesure">
+                <img src="img/mesure.png" alt="Mesurer">
+                <span class="tooltip">Mesurer</span>
+            </button>
+            <button id="printButton" class="round-button" aria-label="Imprimer la carte">
+                <img src="img/print.png" alt="Imprimer">
+                <span class="tooltip">Imprimer</span>
+            </button>
+        </div>
+
+        <div id="basemapPanel" class="panel" aria-labelledby="basemapButton">
+            <div class="basemap-option" data-basemap="osm" role="button" tabindex="0">
+                <i class="fas fa-map" aria-hidden="true"></i>
+                <span>OpenStreetMap</span>
+            </div>
+            <div class="basemap-option" data-basemap="esri" role="button" tabindex="0">
+                <i class="fas fa-satellite" aria-hidden="true"></i>
+                <span>ESRI World Imagery</span>
+            </div>
+            <div class="basemap-option" data-basemap="topo" role="button" tabindex="0">
+                <i class="fas fa-mountain" aria-hidden="true"></i>
+                <span>Carte Topographique</span>
+            </div>
+        </div>
+
+        <div id="measurePanel" class="panel" aria-labelledby="measureButton">
+            <div class="measure-option" id="measureDistanceButton" role="button" tabindex="0">
+                <i class="fas fa-ruler" aria-hidden="true"></i>
+                <span>Mesurer la Distance</span>
+            </div>
+            <div class="measure-option" id="measureAreaButton" role="button" tabindex="0">
+                <i class="fas fa-draw-polygon" aria-hidden="true"></i>
+                <span>Mesurer la Surface</span>
+            </div>
+        </div>
+
+        <div id="map" role="application" aria-label="Carte de la Belgique"></div>
+
+        <div id="measureResultPanel" class="measure-panel" role="dialog" aria-labelledby="measureResultPanelTitle">
+            <h3 id="measureResultPanelTitle">Mesure</h3>
+            <p id="measureInfo">Sélectionnez un outil de mesure.</p>
+            <button id="resetButton">Réinitialiser</button>
+            <button id="closeMeasurePanel">Fermer</button>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/ol@9.0.0/dist/ol.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="map.js"></script>
+
+</body>
+
+</html>

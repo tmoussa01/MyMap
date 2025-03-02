@@ -1,0 +1,211 @@
+/* Style global */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: "Poppins", sans-serif;
+    background-color: #f4f4f4;
+}
+
+header {
+    text-align: center;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+}
+
+/* Conteneur de la carte */
+#map {
+    width: 100%;
+    height: calc(100vh - 60px); /* Ajuster pour le header */
+}
+
+/* Conteneur pour les boutons */
+.button-container {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+/* Bouton rond */
+.round-button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 2px solid #007BFF;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.round-button img {
+    width: 24px;
+    height: 24px;
+}
+
+.round-button:hover {
+    background-color: orange;
+}
+
+/* Tooltip */
+.round-button .tooltip {
+    visibility: hidden;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    border-radius: 4px;
+    padding: 5px 10px;
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.round-button:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Panel pour les choix de fond de carte et les outils de mesure */
+.panel {
+    position: absolute;
+    bottom: 80px;
+    left: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 16px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: none;
+    z-index: 1;
+}
+
+/* Options de fond de carte et de mesure */
+.basemap-option, .measure-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.basemap-option i, .measure-option i {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.basemap-option span, .measure-option span {
+    font-size: 14px;
+    color: #333;
+}
+
+/* Fenêtre de mesures */
+.measure-panel {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: white;
+    padding: 16px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: none;
+    z-index: 1000;
+    max-width: 200px;
+}
+
+.measure-panel button {
+    margin-top: 10px;
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.measure-panel h3 {
+    margin: 0;
+    font-size: 16px;
+}
+.round-button .tooltip {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.round-button:hover .tooltip,
+.round-button:focus .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .round-button {
+        width: 40px;
+        height: 40px;
+    }
+
+    .panel {
+        width: 80%;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 10px;
+    }
+
+    .measure-panel {
+        top: 20px;
+        left: 10px;
+        padding: 12px;
+    }
+}
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px; /* Réduction de la largeur */
+    padding: 5px; /* Moins d’espace interne */
+    border-radius: 8px;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin: 10px auto; /* Centrer sous le titre */
+}
+
+.search-container input {
+    flex: 1; /* Prend tout l’espace disponible */
+    border: 1px solid #ccc;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 14px; /* Texte plus compact */
+    width: 100%; /* Pour éviter qu'il s'étire */
+}
+
+.search-container button {
+    border: none;
+    background: #007BFF;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 5px; /* Espacement avec l’input */
+    transition: background 0.3s;
+}
+
+.search-container button:hover {
+    background: #0056b3;
+}
+
+/* 📱 Pour les petits écrans */
+@media (max-width: 480px) {
+    .search-container {
+        width: 90%; /* Prend plus d’espace sur petits écrans */
+    }
+}
